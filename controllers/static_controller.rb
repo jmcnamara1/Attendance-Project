@@ -13,6 +13,7 @@ class StaticController < Sinatra::Base
 	# sets the view directory correctly
 	set :views, Proc.new { File.join(root, "views") }
 
+  # index
 	get "/" do
 		unless cookies[:visited]
 			@message = true
@@ -21,6 +22,5 @@ class StaticController < Sinatra::Base
 
 		erb :'static/homepage'
 	end
-
 
 end
