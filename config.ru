@@ -16,4 +16,4 @@ use Rack::MethodOverride
 
 use CoursesController
 use StaticController
-run StudentController
+run StudentsController
