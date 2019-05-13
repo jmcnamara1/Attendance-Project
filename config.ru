@@ -14,6 +14,6 @@ require_relative "models/student.rb"
 
 use Rack::MethodOverride
 
-use StoresController
+use CoursesController
 use StaticController
-run PizzasController
+run StudentController
