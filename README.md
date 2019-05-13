@@ -1,3 +1,3 @@
 # Attendance-Project
 
-Ruby based MVC project to create a interactive student attendance register
+Ruby based MVC project to create an interactive student attendance register
