@@ -1,6 +1,6 @@
 class Student
 
-  attr_accessor: :student_id, :first_name, :last_name, :course_id
+  attr_accessor :student_id, :first_name, :last_name, :course_id
 
   # Establishes connection to the "stores" database within PostGres
     def self.open_connection

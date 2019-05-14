@@ -3,12 +3,14 @@
     Featured
   </div>
   <div class="card-body">
-    <h4 class="card-title"><%= course[:name] %></h4>
-    <h5 class="card-text"><%= stream[:course_type] %></h5>
-    <h5 class="card-text"><%= start date[:start_date] %></h5>
-    <h5 class="card-text"><%= end date[:end_date] %></h5>
+    <% @courses.each do |course| %>
+    <h4 class="card-title"><%= course.name %></h4>
+    <h5 class="card-text"><%= course.course_type %></h5>
+    <h5 class="card-text"><%= course.start_date %></h5>
+    <h5 class="card-text"><%= course.end_date %></h5>
 
-    <a href="/courses/:id" class="btn btn-primary">View</a>
+    <a href="/courses/<%= course.course_id %>>" class="btn btn-primary">View</a>
+    <% end %>
   </div>
   <div class="card-footer text-muted">
 

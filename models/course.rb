@@ -10,7 +10,7 @@ class Course
   # get all data from courses table
   def self.all
     conn = self.open_connection
-    sql = "SELECT * FROM courses ORDER BY id"
+    sql = "SELECT * FROM courses ORDER BY course_id"
 
     response = conn.exec(sql)
 
@@ -25,7 +25,7 @@ class Course
   def self.find(id)
     conn = self.open_connection
 
-    sql = "SELECT * FROM courses where id=#{id}"
+    sql = "SELECT * FROM courses where course_id=#{id}"
 
     response = conn.exec(sql)
 
@@ -49,7 +49,7 @@ class Course
     course = Course.new()
 
     # column names go in quotations
-    course.course_id = data['id']
+    course.course_id = data['course_id']
     course.name = data['name']
     course.course_type = data['course_type']
     course.start_date = data['start_date']
