@@ -16,15 +16,14 @@ class CoursesController < Sinatra::Base
 
 
   # Index
-  get '/course' do
-    # Changed to Course instead of Courses
+  get '/courses' do
     @courses = Course.all
     # Changed to course intead of courses
     erb :'course/index'
   end
 
   # New
-  get '/course/new' do
+  get '/courses/new' do
 
     @course = Course.new
 
@@ -32,27 +31,27 @@ class CoursesController < Sinatra::Base
   end
 
   # Show
-  get '/course/:id' do
+  get '/courses/:id' do
 
 
   end
 
 
   # Edit
-  get '/course/:id/edit' do
-    
+  get '/courses/:id/edit' do
+
   end
 
 
   # Create
-  post '/course/' do
+  post '/courses/' do
 
 
   end
 
 
   # Update
-  put '/course/:id' do
+  put '/courses/:id' do
     id = params[:id].to_i
 
     course = Course.find id
@@ -64,12 +63,12 @@ class CoursesController < Sinatra::Base
 
     course.save
 
-    redirect "/course/#{id}"
+    redirect "/courses/#{id}"
   end
 
 
   # Delete
-  delete '/course/:id' do
+  delete '/courses/:id' do
 
 
   end
