@@ -14,37 +14,37 @@ class StudentsController < Sinatra::Base
 	set :views, Proc.new { File.join(root, "views") }
 
   # index
-  get "/student" do
+  get "/students" do
 
   end
 
   # New
-  get "/student/new" do
+  get "/students/new" do
 
   end
 
   # Show
-  get "/student/:id" do
+  get "/students/:id" do
 
   end
 
   # Edit
-  get "/student/:id/edit" do
+  get "/students/:id/edit" do
 
   end
 
   # Create
-  post "/student/" do
+  post "/students/" do
 
   end
 
   # Update
-  put "/student/:id" do
+  put "/students/:id" do
 
   end
 
   # Delete
-  delete "/student/:id" do
+  delete "/students/:id" do
 
   end
 

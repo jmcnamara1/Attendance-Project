@@ -18,8 +18,8 @@ class CoursesController < Sinatra::Base
   # Index
   get '/courses' do
     @courses = Course.all
-    # Changed to course intead of courses
-    erb :'course/index'
+
+    erb  :'courses/index'
   end
 
   # New
@@ -32,7 +32,12 @@ class CoursesController < Sinatra::Base
 
   # Show
   get '/courses/:id' do
+    id = params[:id].to_i
 
+    @course = Course.find(id)
+    @students = Student.course_attendees(id)
+
+    erb :'/courses/show'
 
   end
 
