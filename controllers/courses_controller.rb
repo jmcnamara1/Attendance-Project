@@ -50,7 +50,16 @@ class CoursesController < Sinatra::Base
 
   # Create
   post '/courses/' do
+    new_course = Course.new
 
+    new_course.name = params[:name]
+    new_course.course_type = params[:course_type]
+    new_course.start_date = params[:start_date].to_s
+    new_course.end_date = params[:end_date].to_s
+
+    new_course.save
+
+    redirect "/courses"
 
   end
 
@@ -68,13 +77,17 @@ class CoursesController < Sinatra::Base
 
     course.save
 
-    redirect "/courses/#{id}"
+    redirect "/courses/#{course_id}"
   end
 
 
   # Delete
   delete '/courses/:id' do
+    id = params[:course_id].to_i
 
+    Course.destroy id
+
+    redirect "/courses"
 
   end
 
