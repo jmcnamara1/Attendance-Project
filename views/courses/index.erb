@@ -3,11 +3,14 @@
     Featured
   </div>
   <div class="card-body">
-    <h5 class="card-title">Course[]</h5>
-    <h4 class="card-text">Stream[]</h4>
-    <a href="#" class="btn btn-primary">View</a>
+    <h4 class="card-title"><%= course[:name] %></h4>
+    <h5 class="card-text"><%= stream[:course_type] %></h5>
+    <h5 class="card-text"><%= start date[:start_date] %></h5>
+    <h5 class="card-text"><%= end date[:end_date] %></h5>
+
+    <a href="/courses/:id" class="btn btn-primary">View</a>
   </div>
   <div class="card-footer text-muted">
-    
+
   </div>
 </div>
