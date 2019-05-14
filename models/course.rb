@@ -21,6 +21,20 @@ class Course
 
     return courses
   end
+  # Info from 1 course
+  def self.find(id)
+    conn = self.open_connection
+
+    sql = "SELECT * FROM courses where id=#{id}"
+
+    response = conn.exec(sql)
+
+    course = response.map do |data_item|
+      self.hydrate(data_item)
+    end
+
+    return course
+  end
 
   # destroy course from table
   def self.destroy(id)

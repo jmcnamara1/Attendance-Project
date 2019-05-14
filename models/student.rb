@@ -29,11 +29,11 @@ class Student
 
       response = conn.exec(sql)
 
-      names = response.map do |data_item|
+      students = response.map do |data_item|
         self.hydrate(data_item)
       end
 
-      return names
+      return students
     end
 
     # delete data from database
