@@ -16,48 +16,48 @@ class CoursesController < Sinatra::Base
 
 
   # Index
-  get '/course' do
+  get '/courses' do
     @courses = Course.all
 
-    erb: 'course/index'
+    erb: 'courses/index'
   end
 
   # New
-  get '/course/new' do
+  get '/courses/new' do
 
 
   end
 
   # Show
-  get '/course/:id' do
+  get '/courses/:id' do
 
 
   end
 
 
   # Edit
-  get '/course/:id/edit' do
+  get '/courses/:id/edit' do
 
 
   end
 
 
   # Create
-  post '/course/' do
+  post '/courses/' do
 
 
   end
 
 
   # Update
-  put '/course/:id' do
+  put '/courses/:id' do
 
 
   end
 
 
   # Delete
-  delete '/course/:id' do
+  delete '/courses/:id' do
 
 
   end
