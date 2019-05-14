@@ -1,15 +1,19 @@
 <form class="" action="index.html" method="post">
   <div class="form-group">
     <label>Course</label>
-    <input type="text" name="course" value="">
+    <input type="text" name="course" value="<%= @courses.name %>">
   </div>
   <div class="form-group">
     <label>Stream</label>
-    <input type="text" name="stream" value="">
+    <input type="text" name="stream" value="<%= @courses.course_type %>">
   </div>
   <div class="form-group">
-    <label>Start/End Date</label>
-    <input type="text" name="dates" value="">
+    <label>Start Date</label>
+    <input type="text" name="dates" value="<%= @courses.start_date %>">
+  </div>
+  <div class="form-group">
+    <label>End Date</label>
+    <input type="text" name="dates" value="<%= @courses.end_date %>">
   </div>
 
   <div class="form-group">
