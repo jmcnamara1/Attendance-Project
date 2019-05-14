@@ -1,0 +1,12 @@
+<div class="">
+  <button type="button" name="button">Edit Attendance</button>
+  <button type="button" name="button">Add Student</button>
+  <button type="button" name="button">Delete Student</button>
+</div>
+<div class="">
+  <ul>
+    <% @students.each do |student|%>
+<li><%= student.first_name %> <%= student.last_name %></li>
+    <% end %>
+  </ul>
+</div>
