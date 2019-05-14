@@ -33,7 +33,7 @@ class Course
       self.hydrate(data_item)
     end
 
-    return course
+    return course[0]
   end
 
   # destroy course from table

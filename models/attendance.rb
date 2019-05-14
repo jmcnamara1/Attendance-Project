@@ -22,10 +22,10 @@ class Attendance
     return attendance
   end
 
-  def save()
-    conn = self.open_connection
+  def save
+    conn = Attendance.open_connection
 
-    sql = "INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('#{self.attendance_id}', '#{self.attendance_date}', '#{self.attendance_status_id}', '#{self.student_id}', '#{self.description}')"
+    sql = "INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES (TO_DATE('#{self.attendance_date}', 'YYYY/MM/DD'), '#{self.student_id}', '#{self.attendance_status_id}', '#{self.description}')"
 
     conn.exec(sql)
   end

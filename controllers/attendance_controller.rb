@@ -14,7 +14,8 @@ class AttendanceController < Sinatra::Base
   set :views, Proc.new { File.join(root, "views") }
 
   # runs when students attendance is updated
-  post '/attendance' do
+  post '/courses/:id' do
+    course_id = params[:id].to_i
     new_attendance = Attendance.new()
 
     new_attendance.attendance_date = params[:attendance_date]
@@ -35,7 +36,10 @@ class AttendanceController < Sinatra::Base
 
     new_attendance.student_id = params[:student_id]
     new_attendance.description = params[:description]
+
+    new_attendance.save()
+
+    redirect "/courses/#{course_id}"
   end
 
-  new_attendance.save()
 end
