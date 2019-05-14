@@ -22,11 +22,19 @@ class Student
       return students
     end
 
+    def self.course_attendees(id)
+      conn = self.open_connection
 
+      sql = "Select * FROM students where course_id=#{id}"
 
+      response = conn.exec(sql)
 
+      names = response.map do |data_item|
+        self.hydrate(data_item)
+      end
 
-
+      return names
+    end
 
     # delete data from database
     def self.destroy id
