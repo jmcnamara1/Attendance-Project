@@ -1,46 +1,39 @@
-<div class="buttons">
-  <button type="button" name="button"><a href="/students/new">Add Student</a></button>
-  <button type="button" name="button">Delete Course</button>
-</div>
+<div class="main-content">
+  <h2 class="group-title"><%= @course[0].name %> Register</h2>
 
-<div class="">
-  <ul>
-    <% @students.each do |student|%>
-    <form method="post">
+  <div class="buttons">
+    <button type="button" name="button"><a href="/students/new">Add Student</a></button>
+    <button type="button" name="button">Delete Course</button>
+  </div>
 
-      <% if(student.student_id) %>
-        <input type="hidden" name="_method" value="put">
-      <% end %>
+  <div class="form-heading">
+    <p id="name-col">Name</p>
+    <p id="date-col">Date</p>
+    <p id="att-col">Attendance</p>
+    <p id="description-col">Description</p>
+  </div>
 
-      <div class="form-group">
-        <input type="hidden" name="student_id" value="<%= student.student_id %>">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Name</label>
-        <h4 name="date"><%= student.first_name %> <%= student.last_name %></h4>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Date</label>
-        <h4><%= Date.today.to_s %></h4>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect2">Status</label>
-        <select class="form-control" name="status" id="exampleFormControlSelect2">
-          <option>On Time</option>
-          <option>Slightly late(5 minutes)</option>
-          <option>Very late(over 30 minutes)</option>
-          <option>Absent</option>
-          <option>Authorized Absence</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Description</label>
-        <textarea class="form-control" name="description" id="exampleFormControlTextarea1"></textarea>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Save Attendance">
-      </div>
-    </form>
+  <% @students.each do |student|%>
+  <form method="post" class="student-attendance-display">
+
+    <% if(student.student_id) %>
+      <input type="hidden" name="_method" value="put">
     <% end %>
-  </ul>
+
+    <div class="form-group student-form">
+      <input type="hidden" name="student_id" value="<%= student.student_id %>">
+      <p class="student-name" name="date"><%= student.first_name %> <%= student.last_name %></p>
+      <p><%= Date.today.to_s %></p>
+      <select class="form-control" name="status" id="exampleFormControlSelect2">
+        <option>On Time</option>
+        <option>Slightly late(5 minutes)</option>
+        <option>Very late(over 30 minutes)</option>
+        <option>Absent</option>
+        <option>Authorized Absence</option>
+      </select>
+      <textarea class="form-control" name="description" id="exampleFormControlTextarea1"></textarea>
+      <input type="submit" value="Save Attendance">
+    </div>
+  </form>
+  <% end %>
 </div>
