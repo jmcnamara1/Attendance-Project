@@ -17,9 +17,10 @@ class CoursesController < Sinatra::Base
 
   # Index
   get '/course' do
-    @courses = Courses.all
-
-    erb: 'courses/index'
+    # Changed to Course instead of Courses
+    @courses = Course.all
+    # Changed to course intead of courses
+    erb: 'course/index'
   end
 
   # New
