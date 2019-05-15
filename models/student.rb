@@ -45,17 +45,27 @@ class Student
       conn.exec(sql)
     end
 
+    # returns attendance history of individual student
     def self.attendance_history(id)
       conn = self.open_connection
 
-      sql = "SELECT ---- From students s
+      sql = "SELECT s.first_name + ' ' + s.last_name AS 'Name', sa.attendance_date AS 'Date',
+              ast.status AS 'Attendance Status', sa.description FROM students s
               INNER JOIN student_attendance sa on s.student_id = sa.student_id
               INNER JOIN attendance_status ast on sa.attendance_status_id = ast.attendance_status_id
               where student_id='#{id}'"
+
+      response = conn.exec(sql)
+
+      attendance_history = response.map do |data_item|
+        self.hydrate_attendance(data_item)
+      end
+
+      return attendance_history
     end
 
     # Convert the response from a PG::Result
-    def self.hydrate data
+    def self.hydrate(data)
       student = Student.new
 
       student.student_id = data['id']
@@ -64,6 +74,17 @@ class Student
       student.course_id = data['course_id']
 
       return student
+    end
+
+    def self.hydrate_attendance(data)
+      student_records = Student.new
+
+      student_records.name = data['Name']
+      student_records.attendance_date = data['Date']
+      student_records.status = data['Attendance Status']
+      student_records.description = data['description']
+
+      return student_records
     end
 
 end

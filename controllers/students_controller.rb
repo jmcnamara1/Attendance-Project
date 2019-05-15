@@ -20,7 +20,7 @@ class StudentsController < Sinatra::Base
 
   # Show
   get "/students/:id" do
-
+    
   end
 
   # Edit
