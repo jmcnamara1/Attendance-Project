@@ -3,34 +3,45 @@
   <button type="button" name="button">Delete Course</button>
 </div>
 
+<form class="" action="/courses/<%= @course.course_id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Remove Course">
+</form>
+
+
 <div class="">
   <ul>
-    <% @students.each do |student|%>
+    <% @attendance_list.each do |attendance_list|%>
     <form action="/courses/<%= @course.course_id %>" method="post">
       <div class="form-group">
-        <input type="hidden" name="student_id" value="<%= student.student_id %>">
+        <input type="hidden" name="student_id" value="<%= attendance_list.student_id %>">
       </div>
       <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
-        <h4 name="name"><%= student.first_name %> <%= student.last_name %></h4>
+        <h4><%= attendance_list.first_name %> <%= attendance_list.last_name %></h4>
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Date</label>
-        <h4 name="attendance_date"><%= Time.now.strftime("%d/%m/%Y") %></h4>
+        <input type="date" name="attendance_date" value="<%= Date.today %>">
       </div>
       <div class="form-group">
+        <% puts attendance_list.attendance_date %>
+        <% puts Time.now.strftime("%Y-%m-%d") %>
         <label for="exampleFormControlSelect2">Status</label>
         <select class="form-control" name="status" id="exampleFormControlSelect2" >
-          <option>On Time</option>
-          <option selected="selected">Slightly late(5 minutes)</option>
-          <option>Very late(over 30 minutes)</option>
-          <option>Absent</option>
-          <option>Authorized Absence</option>
+          <option <% if attendance_list.attendance_date == Time.now.strftime("%Y-%m-%d") && attendance_list.attendance_status_id == 1 %> selected="selected" <% end %>>On Time</option>
+          <option <% if attendance_list.attendance_date == Time.now.strftime("%Y-%m-%d") && attendance_list.attendance_status_id == 2 %> selected="selected" <% end %>>Slightly late(5 minutes)</option>
+          <option <% if attendance_list.attendance_date == Time.now.strftime("%Y-%m-%d") && attendance_list.attendance_status_id == 3 %> selected="selected" <% end %>>Very late(over 30 minutes)</option>
+          <option <% if attendance_list.attendance_date == Time.now.strftime("%Y-%m-%d") && attendance_list.attendance_status_id == 4 %> selected="selected" <% end %>>Absent</option>
+          <option <% if attendance_list.attendance_date == Time.now.strftime("%Y-%m-%d") && attendance_list.attendance_status_id == 5 %> selected="selected" <% end %>>Authorized Absence</option>
         </select>
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Description</label>
-        <textarea class="form-control" name="description" id="exampleFormControlTextarea1"></textarea>
+        <textarea class="form-control" name="description" id="exampleFormControlTextarea1">
+          <% if attendance_list.attendance_date == Time.now.strftime("%Y-%m-%d")%> <%= attendance_list.description %>
+          <% end %>
+        </textarea>
       </div>
       <div class="form-group">
         <input type="submit" value="Save Attendance">

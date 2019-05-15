@@ -14,28 +14,32 @@ CREATE TABLE courses (
 );
 
 CREATE TABLE attendance_status (
-  id SERIAL PRIMARY KEY,
+  attendance_status_id SERIAL PRIMARY KEY,
   status VARCHAR(30),
   colour_code VARCHAR(1)
 );
 
 CREATE TABLE students (
-  id SERIAL PRIMARY KEY,
+  student_id SERIAL PRIMARY KEY,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
-  course_id INT REFERENCES courses(course_id)
+  course_id INT,
+  FOREIGN KEY(course_id) REFERENCES courses(course_id)
 );
 
 CREATE TABLE student_attendance (
-  id SERIAL PRIMARY KEY,
-  attendance_date DATE,
-  student_id INT REFERENCES students(id),
-  attendance_status_id INT REFERENCES attendance_status(id),
+  student_attendance_id SERIAL PRIMARY KEY,
+  attendance_date DATE default now(),
+  student_id INT,
+  FOREIGN KEY(student_id) REFERENCES students(student_id),
+  attendance_status_id INT REFERENCES attendance_status(attendance_status_id),
   description VARCHAR(100)
 );
 
 INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Eng-30','2019/04/01', '2019/06/28','Engineering');
 INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Busi-26','2019/05/13','2019/07/05','Business');
+INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Needs assignment','2019/05/13','2019/10/04','Unassigned');
+
 
 INSERT INTO attendance_status(status, colour_code) VALUES ('On Time', 'g');
 INSERT INTO attendance_status(status, colour_code) VALUES ('<5 mins late', 'y');

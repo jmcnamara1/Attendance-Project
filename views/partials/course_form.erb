@@ -1,19 +1,24 @@
-<form class="" action="index.html" method="post">
+<form class="" action="/courses/<%= @course.course_id %>" method="post">
+
+  <% if @course.course_id %>
+		<input type="hidden" name="_method" value="put">
+	<% end %>
+
   <div class="form-group">
     <label>Course</label>
-    <input type="text" name="name" value="<%= @course.name %>">
+    <input type="text" name="name" value="<%= @course.name %>" placeholder="Course">
   </div>
   <div class="form-group">
     <label>Stream</label>
-    <input type="text" name="course_type" value="<%= @course.course_type %>">
+    <input type="text" name="course_type" value="<%= @course.course_type %>" placeholder="Type">
   </div>
   <div class="form-group">
     <label>Start Date</label>
-    <input type="text" name="start_date" value="<%= @course.start_date %>">
+    <input type="date" name="start_date" value="<%= @course.start_date %>" placeholder="yy/mm/dd">
   </div>
   <div class="form-group">
     <label>End Date</label>
-    <input type="text" name="end_date" value="<%= @course.end_date %>">
+    <input type="date" name="end_date" value="<%= @course.end_date %>" placeholder="yy/mm/dd">
   </div>
 
   <div class="form-group">
