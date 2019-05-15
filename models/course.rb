@@ -25,15 +25,11 @@ class Course
   def self.find(id)
     conn = self.open_connection
 
-    sql = "SELECT * FROM courses where course_id=#{id}"
+    sql = "SELECT * FROM courses where course_id = #{id}"
 
     response = conn.exec(sql)
 
-    course = response.map do |data_item|
-      self.hydrate(data_item)
-    end
-
-    return course
+    return self.hydrate response[0]
   end
 
   def save
@@ -49,11 +45,20 @@ class Course
     conn.exec(sql)
   end
 
-  # destroy course from table
-  def self.destroy(id)
+
+  def self.update_course id
     conn = self.open_connection
 
-    sql = "DELETE FROM courses WHERE id = #{course_id}"
+    sql = "UPDATE students SET course_id = 3 WHERE course_id = #{id}"
+
+    conn.exec(sql)
+  end
+  
+  # destroy course from table
+  def self.destroy id
+    conn = self.open_connection
+
+    sql = "DELETE FROM Courses WHERE course_id = #{id}"
 
     conn.exec(sql)
   end

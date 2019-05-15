@@ -83,8 +83,9 @@ class CoursesController < Sinatra::Base
 
   # Delete
   delete '/courses/:id' do
-    id = params[:course_id].to_i
+    id = params[:id].to_i
 
+    Course.update_course id
     Course.destroy id
 
     redirect "/courses"

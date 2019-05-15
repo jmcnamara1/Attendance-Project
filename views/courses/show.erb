@@ -2,6 +2,13 @@
   <button type="button" name="button">Edit Attendance</button>
   <button type="button" name="button">Add Student</button>
 </div>
+
+<form class="" action="/courses/<%= @course.course_id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Remove Course">
+</form>
+
+
 <div class="">
   <ul>
     <% @students.each do |student|%>
