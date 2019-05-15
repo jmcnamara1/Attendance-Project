@@ -30,6 +30,7 @@ CREATE TABLE students (
 CREATE TABLE student_attendance (
   student_attendance_id SERIAL PRIMARY KEY,
   attendance_date DATE default now(),
+  student_form,
   student_id INT,
   FOREIGN KEY(student_id) REFERENCES students(student_id),
   attendance_status_id INT REFERENCES attendance_status(attendance_status_id),
