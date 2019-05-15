@@ -35,7 +35,8 @@ class CoursesController < Sinatra::Base
     id = params[:id].to_i
 
     @course = Course.find(id)
-    @students = Student.course_attendees(id)
+    @course_attendees = Student.course_attendees(id)
+    @attendance_list = Student.course_attendees_status(id)
 
     erb :'/courses/show'
 
@@ -47,10 +48,18 @@ class CoursesController < Sinatra::Base
 
   end
 
-
   # Create
   post '/courses/' do
+    new_course = Course.new
 
+    new_course.name = params[:name]
+    new_course.course_type = params[:course_type]
+    new_course.start_date = params[:start_date].to_s
+    new_course.end_date = params[:end_date].to_s
+
+    new_course.save
+
+    redirect "/courses"
 
   end
 
@@ -68,13 +77,18 @@ class CoursesController < Sinatra::Base
 
     course.save
 
-    redirect "/courses/#{id}"
+    redirect "/courses/#{course_id}"
   end
 
 
   # Delete
   delete '/courses/:id' do
+    id = params[:id].to_i
 
+    Course.update_course id
+    Course.destroy id
+
+    redirect "/courses"
 
   end
 
