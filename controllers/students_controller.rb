@@ -20,7 +20,11 @@ class StudentsController < Sinatra::Base
 
   # Show
   get "/students/:id" do
-    
+    id = params[:id].to_i
+
+    @attendance_record = Student.attendance_history(id)
+
+    erb :'students/show'
   end
 
   # Edit

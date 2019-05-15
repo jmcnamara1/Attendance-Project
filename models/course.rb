@@ -42,11 +42,10 @@ class Course
       sql = "INSERT INTO courses (name ,course_type ,start_date ,end_date) VALUES ('#{self.name}', '#{self.course_type}', '#{self.start_date}', '#{self.end_date}')"
     end
 
-<<<<<<< HEAD
     conn.exec(sql)
-=======
+
     return course[0]
->>>>>>> student_records
+    
   end
 
 
@@ -57,7 +56,7 @@ class Course
 
     conn.exec(sql)
   end
-  
+
   # destroy course from table
   def self.destroy id
     conn = self.open_connection
