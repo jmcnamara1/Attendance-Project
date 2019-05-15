@@ -8,7 +8,7 @@
 <hr>
 <div class="">
   <ul>
-    <% @course_attendees.each do |student_status|%>
+    <% @course_attendance.each do |student_status|%>
     <form action="/courses/<%= @course.course_id %>" method="post">
       <div class="form-group">
         <input type="hidden" name="student_id" value="<%= student_status.student_id %>">

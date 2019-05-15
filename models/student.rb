@@ -45,7 +45,7 @@ class Student
       conn.exec(sql)
     end
 
-    def self.course_attendees(id)
+    def self.course_attendance(id)
       conn = self.open_connection
 
       sql = "SELECT * FROM students WHERE course_id=#{id}"
@@ -59,7 +59,7 @@ class Student
       return students
     end
 
-    def self.course_attendees_status(id)
+    def self.course_attendance_status(id)
       conn = self.open_connection
 
       sql = "SELECT * FROM students s
