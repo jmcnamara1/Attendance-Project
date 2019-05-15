@@ -25,6 +25,20 @@ class Student
     def self.course_attendees(id)
       conn = self.open_connection
 
+      sql = "SELECT * FROM students WHERE course_id=#{id}"
+
+      response = conn.exec(sql)
+
+      students = response.map do |data_item|
+        self.hydrate(data_item)
+      end
+
+      return students
+    end
+
+    def self.course_attendees_status(id)
+      conn = self.open_connection
+
       sql = "SELECT * FROM students s
             INNER JOIN student_attendance sa ON sa.student_id = s.student_id
             WHERE course_id=#{id}"

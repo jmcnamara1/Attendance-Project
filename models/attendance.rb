@@ -22,6 +22,24 @@ class Attendance
     return attendance
   end
 
+  # def self.find_row (id, year, month, day)
+  #   conn = self.open_connection
+  #   sql = "SELECT * FROM student_attendance WHERE student_id = #{id} AND attendance_date = '#{year}-#{month}-#{day}' LIMIT 1"
+  #
+  #   response = conn.exec(sql)
+  #
+  #   #IF response.size = 0
+  #     #CREATE ROW
+  #   #IF SIZE = 1
+  #     #UPDATE ROW
+  #
+  #   # hydrated = self.hydrate response[0]
+  #   # puts "Hydrated return is #{hydrated.description}"
+  #   # puts "Date is #{year}-#{month}-#{day}"
+  #
+  #   # return hydrated
+  # end
+
   def save
     conn = Attendance.open_connection
 

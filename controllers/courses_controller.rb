@@ -35,6 +35,7 @@ class CoursesController < Sinatra::Base
     id = params[:id].to_i
 
     @course = Course.find(id)
+    @course_attendees = Student.course_attendees(id)
     @attendance_list = Student.course_attendees_status(id)
 
     erb :'/courses/show'
