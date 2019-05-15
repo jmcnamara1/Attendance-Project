@@ -1,14 +1,11 @@
-<div class="buttons">
-  <button type="button" name="button"><a href="/students/new">Add Student</a></button>
-  <button type="button" name="button">Delete Course</button>
-</div>
-
 <form class="" action="/courses/<%= @course.course_id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="" value="Remove Course">
+  <a class="btn btn-primary" href="/students/new">Add Student</a>
+  <a class="btn btn-primary" href="">Edit Attendance</a>
+
+  <input class="btn btn-primary" type="hidden" name="_method" value="delete">
+  <input class="btn btn-primary" type="submit" value="Remove Course">
 </form>
-
-
+<hr>
 <div class="">
   <ul>
     <% @course_attendance.each do |student_status|%>

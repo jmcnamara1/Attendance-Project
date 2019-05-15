@@ -22,6 +22,29 @@ class Student
       return students
     end
 
+    def self.find id
+      conn = self.open_connection
+
+      sql = "SELECT * FROM students WHERE student_id = #{id}"
+
+      response = conn.exec(sql)
+
+      return self.hydrate response[0]
+    end
+
+
+    def save
+      conn = Student.open_connection
+
+      if (self.student_id)
+        sql = "UPDATE students SET first_name='#{self.first_name}', last_name='#{self.last_name}', course_id='#{self.course_id}' WHERE student_id = '#{self.student_id}'"
+      else
+        sql = "INSERT INTO students (first_name ,last_name ,course_id ) VALUES ('#{self.first_name}', '#{self.last_name}', '#{self.course_id}')"
+      end
+
+      conn.exec(sql)
+    end
+
     def self.course_attendance(id)
       conn = self.open_connection
 
