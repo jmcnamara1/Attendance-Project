@@ -21,30 +21,40 @@
 <table class="table">
   <thead class="thead-light">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col"> On Time </th>
+      <th scope="col"> Slightly Late </th>
+      <th scope="col"> Very Late </th>
+      <th scope="col"> Absent </th>
+      <th scope="col"> Authorized Absence </th>
     </tr>
   </thead>
   <tbody>
+    <% @attendance_record.each do |daily_record| %>
+      OT = 0
+      SL = 0
+      VL = 0
+      A = 0
+      AA = 0
+
+      case daily_record.status
+      when 'On Time'
+        OT++
+      when 'less than 5 mins late'
+        SL++
+      when 'more than 5 mins late'
+        VL++
+      when 'Absent'
+        A++
+      when 'Authorised Absence'
+        AA++
+      end
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td><%= OT + '%' %></td>
+      <td><%= SL + '%' %></td>
+      <td><%= VL + '%' %></td>
+      <td><%= A + '%' %></td>
+      <td><%= AA + '%' %></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <% end %>
   </tbody>
 </table>
