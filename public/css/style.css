@@ -1,1 +1,42 @@
-
+body{
+  background: #F60E63;
+  font-family: sans-serif;
+}
+.button button{
+  margin: 5px 0;
+  width: 150px;
+}
+.button input{
+  width: 150px;
+}
+.StudentList{
+  border-style: solid;
+}
+.StudentList li{
+  padding: 10px 0;
+}
+div .jumbotron {
+  border-style: solid;
+}
+div .bd-example{
+  border-style: solid;
+}
+div .progress{
+  border-style: solid;
+}
+.mr-3{
+  border-style: solid;
+}
+.input-box{
+  margin: 0 30px;
+}
+.start-box{
+  margin: 0 10px;
+}
+.end-box{
+  margin: 0 15px;
+}
+.submit{
+  border-radius: 17%;
+  margin: 0 86px;
+}
