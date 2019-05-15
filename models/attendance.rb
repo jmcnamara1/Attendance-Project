@@ -22,6 +22,23 @@ class Attendance
     return attendance
   end
 
+  # def self.student_form(id)
+  #   conn = self.open_connection
+  #
+  #   sql = "SELECT sa.student_id, sa.attendance_date
+  #     FROM student_attendance sa
+  #     INNER JOIN students ON students.id = sa.student_id
+  #     WHERE students.course_id=#{id}"
+  #
+  #   response = conn.exec(sql)
+  #
+  #   students = response.map do |data_item|
+  #     self.hydrate(data_item)
+  #   end
+  #
+  #   return students
+  # end
+
   def save
     conn = Attendance.open_connection
 
