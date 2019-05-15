@@ -30,6 +30,14 @@ class Attendance
     conn.exec(sql)
   end
 
+  # def edit_attendance
+  #   conn = Attendance.open_connection
+  #
+  #   sql = "UPDATE student_attendance SET attendance_status_id='#{self.attendance_status_id}', description='#{self.description}' WHERE student_id = #{self.student_id} AND attendance_date = #{self.attendance_date}"
+  #
+  #   conn.exec(sql)
+  # end
+
   def self.hydrate(data)
     attendance = Attendance.new()
 
