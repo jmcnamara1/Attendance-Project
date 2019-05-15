@@ -23,6 +23,7 @@ class StudentsController < Sinatra::Base
   # New
   get "/students/new" do
 
+    @courses = Course.all
     @student = Student.new
 
     erb :'students/new'
@@ -44,11 +45,11 @@ class StudentsController < Sinatra::Base
 
     new_student.first_name = params[:first_name]
     new_student.last_name = params[:last_name]
-    new_student.course_id = params[:course_id]
+    new_student.course_id = params[:course_id].to_i
 
     new_student.save
 
-    redirect "/courses/#{course_id}"
+    redirect "/courses/#{new_student.course_id}"
 
   end
 
@@ -58,9 +59,9 @@ class StudentsController < Sinatra::Base
 
     student = Student.find id
 
-    student.first_name = params[:name]
-    student.last_name = params[:course_type]
-    student.course_id = params[:course_id]
+    student.first_name = params[:first_name]
+    student.last_name = params[:last_name]
+    student.course_id = params[:course_id].to_i
 
     student.save
 

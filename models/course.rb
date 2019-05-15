@@ -33,6 +33,8 @@ class Course
     return self.hydrate response[0]
   end
 
+  
+
   def save
     conn = Course.open_connection
 
@@ -45,7 +47,6 @@ class Course
 
     conn.exec(sql)
   end
-
 
   def self.update_course id
     conn = self.open_connection
