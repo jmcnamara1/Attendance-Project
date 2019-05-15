@@ -1,0 +1,24 @@
+<form class="" action="/students/<%= @student.student_id %>" method="post">
+
+  <% if @student.student_id%>
+		<input type="hidden" name="_method" value="put">
+	<% end %>
+
+  <div class="form-group">
+    <label>Student</label>
+    <input type="text" name="first_name" value="<%= @student.first_name %>" placeholder="First Name">
+  </div>
+  <div class="form-group">
+    <label>Stream</label>
+    <input type="text" name="last_name" value="<%= @student.last_name %>" placeholder="Last Name">
+  </div>
+  <div class="form-group">
+    <label>Start Date</label>
+    <input type="number" name="course_id" value="<%= @student.course_id %>" placeholder="ID">
+  </div>
+
+  <div class="form-group">
+    <input type="submit" name="" value="Submit">
+  </div>
+
+</form>

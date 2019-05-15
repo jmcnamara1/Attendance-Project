@@ -14,13 +14,13 @@ CREATE TABLE courses (
 );
 
 CREATE TABLE attendance_status (
-  id SERIAL PRIMARY KEY,
+  attendance_status_id SERIAL PRIMARY KEY,
   status VARCHAR(30),
   colour_code VARCHAR(1)
 );
 
 CREATE TABLE students (
-  id SERIAL PRIMARY KEY,
+  student_id SERIAL PRIMARY KEY,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
   course_id INT,
@@ -28,11 +28,11 @@ CREATE TABLE students (
 );
 
 CREATE TABLE student_attendance (
-  id SERIAL PRIMARY KEY,
+  student_attendance_id SERIAL PRIMARY KEY,
   attendance_date DATE,
   student_id INT,
-  FOREIGN KEY(student_id) REFERENCES students(id),
-  attendance_status_id INT REFERENCES attendance_status(id),
+  FOREIGN KEY(student_id) REFERENCES students(student_id),
+  attendance_status_id INT REFERENCES attendance_status(attendance_status_id),
   description VARCHAR(100)
 );
 

@@ -22,6 +22,14 @@ class Student
       return students
     end
 
+    def self.find
+      conn = self.open_connection
+
+      sql = "SELECT * FROM students WHERE student_id = #{id}"
+
+
+    end
+
     def self.course_attendees(id)
       conn = self.open_connection
 

@@ -21,6 +21,7 @@ class Course
 
     return courses
   end
+
   # Info from 1 course
   def self.find(id)
     conn = self.open_connection
@@ -53,7 +54,7 @@ class Course
 
     conn.exec(sql)
   end
-  
+
   # destroy course from table
   def self.destroy id
     conn = self.open_connection
