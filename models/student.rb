@@ -37,12 +37,21 @@ class Student
     end
 
     # delete data from database
-    def self.destroy id
+    def self.destroy(id)
       conn = self.open_connection
 
       sql = "DELETE FROM students WHERE id = #{id}"
 
       conn.exec(sql)
+    end
+
+    def self.attendance_history(id)
+      conn = self.open_connection
+
+      sql = "SELECT ---- From students s
+              INNER JOIN student_attendance sa on s.student_id = sa.student_id
+              INNER JOIN attendance_status ast on sa.attendance_status_id = ast.attendance_status_id
+              where student_id='#{id}'"
     end
 
     # Convert the response from a PG::Result

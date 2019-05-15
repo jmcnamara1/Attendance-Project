@@ -47,7 +47,6 @@ class CoursesController < Sinatra::Base
 
   end
 
-
   # Create
   post '/courses/' do
     new_course = Course.new
