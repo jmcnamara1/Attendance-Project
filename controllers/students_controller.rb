@@ -112,7 +112,7 @@ class StudentsController < Sinatra::Base
       names = names[0..1]
     end
     if first_name == nil
-      redirect "/courses"
+      redirect "/students"
     elsif first_name != nil
       first_name.capitalize!
     end
