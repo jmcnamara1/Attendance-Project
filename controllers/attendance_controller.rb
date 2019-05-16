@@ -15,26 +15,19 @@ class AttendanceController < Sinatra::Base
 
   # runs when students attendance is updated
   post '/courses/:id' do
-
-
     foundFlag = false
-
+    entryNumber = 0
     attendance_entries = Attendance.all
-    attendance_entries.each do |entry|
 
+    attendance_entries.each do |entry|
       if entry.student_id == params[:student_id] && entry.attendance_date == params[:attendance_date]
         foundFlag = true
-        puts "Match"
-        puts "DB date: #{entry.attendance_date}"
-        puts "Input date: #{params[:attendance_date]}"
+        entryNumber = entry.attendance_id
       end
     end
 
     if foundFlag == false
-      puts "Not Found"
-      # How does this know where to get :id from?
-      # Is it because we defined it in the post command
-      course_id = params[:id].to_i
+
       new_attendance = Attendance.new()
 
       new_attendance.attendance_date = params[:attendance_date]
@@ -56,7 +49,31 @@ class AttendanceController < Sinatra::Base
       new_attendance.student_id = params[:student_id]
       new_attendance.description = params[:description]
 
-      new_attendance.save()
+      new_attendance.save
+
+    elsif foundFlag == true
+      editAttendance = Attendance.find entryNumber
+
+      editAttendance.attendance_date = params[:attendance_date]
+
+      status = params[:status]
+      case status
+      when 'On Time'
+        editAttendance.attendance_status_id = 1
+      when 'Slightly late(5 minutes)'
+        editAttendance.attendance_status_id = 2
+      when 'Very late(over 30 minutes)'
+        editAttendance.attendance_status_id = 3
+      when 'Absent'
+        editAttendance.attendance_status_id = 4
+      when 'Authorized Absence'
+        editAttendance.attendance_status_id = 5
+      end
+
+      editAttendance.student_id = params[:student_id]
+      editAttendance.description = params[:description]
+
+      editAttendance.save
     end
 
     course_id = params[:id].to_i

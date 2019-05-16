@@ -1,4 +1,4 @@
-CREATE DATABASE  attendance_app;
+-- CREATE DATABASE  attendance_app;
 
 DROP TABLE IF EXISTS student_attendance;
 DROP TABLE IF EXISTS students;
@@ -32,8 +32,9 @@ CREATE TABLE student_attendance (
   attendance_date DATE default now(),
   student_id INT,
   FOREIGN KEY(student_id) REFERENCES students(student_id),
-  attendance_status_id INT REFERENCES attendance_status(attendance_status_id),
-  description VARCHAR(100)
+  attendance_status_id INT,
+  FOREIGN KEY(attendance_status_id) REFERENCES attendance_status(attendance_status_id),
+  description VARCHAR(255)
 );
 
 INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Eng-30','2019/04/01', '2019/06/28','Engineering');
