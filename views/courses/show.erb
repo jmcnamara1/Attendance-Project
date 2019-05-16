@@ -17,11 +17,7 @@
   </div>
 
   <% @course_attendance.each do |student_status|%>
-  <form method="post" class="student-attendance-display">
-
-    <% if(student_status.student_id) %>
-      <input type="hidden" name="_method" value="put">
-    <% end %>
+  <form action="/courses/<%= @course.course_id %>" method="post" class="student-attendance-display">
 
     <div class="form-group student-form">
       <input type="hidden" name="student_id" value="<%= student_status.student_id %>">
