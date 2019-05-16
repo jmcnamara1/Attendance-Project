@@ -9,16 +9,12 @@
     <h5 class="card-text"><%= course.start_date %></h5>
     <h5 class="card-text"><%= course.end_date %></h5>
 
-<<<<<<< HEAD
-    <a href="/courses/<%= course.course_id %>" class="btn btn-primary">View</a>
+    <a href="/courses/<%= course.course_id %>" class="btn btn-primary"><%= course.name %></a>
 
     <br>
     <br>
 
     <hr>
-=======
-    <a href="/courses/<%= course.course_id %>" class="btn btn-primary"><%= course.name %></a>
->>>>>>> student_records
     <% end %>
   </div>
   <div class="card-footer text-muted">

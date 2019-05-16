@@ -1,45 +1,43 @@
-<div class="buttons">
-  <button type="button" name="button"><a href="/students/new">Add Student</a></button>
-  <button type="button" name="button">Delete Course</button>
-</div>
-
-<<<<<<< HEAD
 <form class="" action="/courses/<%= @course.course_id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="" value="Remove Course">
+  <a class="btn btn-primary" href="/students/new">Add Student</a>
+  <a class="btn btn-primary" href="">Edit Attendance</a>
+
+  <input class="btn btn-primary" type="hidden" name="_method" value="delete">
+  <input class="btn btn-primary" type="submit" value="Remove Course">
 </form>
+<hr>
 
-
-=======
->>>>>>> student_records
 <div class="">
+  <% puts @todaysAttendance %>
   <ul>
-    <% @students.each do |student|%>
+    <% @course_attendance.each do |student_status|%>
     <form action="/courses/<%= @course.course_id %>" method="post">
       <div class="form-group">
-        <input type="hidden" name="student_id" value="<%= student.student_id %>">
+        <input type="hidden" name="student_id" value="<%= student_status.student_id %>">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlInput1">Name</label>
-        <h4 name="name"><a href="/students/:id"><%= student.first_name %> <%= student.last_name %></a></h4>
+        <label>Name</label>
+        <h4><%= student_status.first_name %> <%= student_status.last_name %></h4>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Date</label>
-        <h4 name="attendance_date"><%= Time.now.strftime("%d/%m/%Y") %></h4>
+        <label>Date</label>
+        <input type="date" name="attendance_date" value="<%= Date.today %>">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect2">Status</label>
-        <select class="form-control" name="status" id="exampleFormControlSelect2">
+        <label>Status</label>
+        <select class="form-control" name="status">
+          <!-- Below is the autofill that doesnt work, use  "selected = "selected" -->
           <option>On Time</option>
           <option>Slightly late(5 minutes)</option>
           <option>Very late(over 30 minutes)</option>
           <option>Absent</option>
-          <option>Authorized Absence</option>
+          <option selected="selected">Authorized Absence</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Description</label>
-        <textarea class="form-control" name="description" id="exampleFormControlTextarea1"></textarea>
+        <label>Description</label>
+        <textarea class="form-control" name="description">
+        </textarea>
       </div>
       <div class="form-group">
         <input type="submit" value="Save Attendance">
