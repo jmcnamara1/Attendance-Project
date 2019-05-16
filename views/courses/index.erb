@@ -1,21 +1,30 @@
-<div class="card text-center">
-  <div class="card-header">
-    Current Courses
+
+<div class="form-row">
+  <div class="card-header col-12 text-center" id="course-header">
+    <b>Current Courses</b>
   </div>
-  <div class="card-body">
     <% @courses.each do |course| %>
-    <h4 class="card-title"><%= course.name %></h4>
-    <h5 class="card-text"><%= course.course_type %></h5>
-    <h5 class="card-text"><%= course.start_date %></h5>
-    <h5 class="card-text"><%= course.end_date %></h5>
+    <div class="card col-4 text-center" style="width: 18rem;">
+      <div class="card-body">
+        <h4 class="card-title"><%= course.name %></h4>
+        <h5 class="card-text"><%= course.course_type %></h5>
+        <h5 class="card-text">Start Date:<%= course.start_date %></h5>
+        <h5 class="card-text">End Date: <%= course.end_date %></h5>
 
-    <a href="/courses/<%= course.course_id %>" class="btn btn-primary"><%= course.name %></a>
-    <br>
-    <br>
-    <hr>
+        <a href="/courses/<%= course.course_id %>" class="btn btn-primary text-white"  ><%= course.name %></a>
+        <br>
+        <br>
+        <hr>
+
+      </div>
+    </div>
     <% end %>
-  </div>
-  <div class="card-footer text-muted">
 
+  <div class="card-footer text-muted col-12" id="course-header">
   </div>
+
+  <br>
+  <br>
+  <br>
+
 </div>
