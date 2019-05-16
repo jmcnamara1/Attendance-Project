@@ -7,41 +7,37 @@
 </form>
 <hr>
 
-<div class="">
-  <ul>
-    <% @course_attendance.each do |student_status|%>
-    <form action="/courses/<%= @course.course_id %>" method="post">
-      <div class="form-group">
-        <input type="hidden" name="student_id" value="<%= student_status.student_id %>">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Name</label>
-        <h4 name="name"><a href="/students/<%= student_status.student_id %>"><%= student_status.first_name %> <%= student_status.last_name %></a></h4>
-      </div>
-      <div class="form-group">
-        <label>Date</label>
-        <input type="date" name="attendance_date" value="<%= Date.today %>">
-      </div>
-      <div class="form-group">
-        <label>Status</label>
-        <select class="form-control" name="status">
-          <!-- Below is the autofill that doesnt work, use  "selected = "selected" -->
-          <option>On Time</option>
-          <option>Slightly late(5 minutes)</option>
-          <option>Very late(over 30 minutes)</option>
-          <option>Absent</option>
-          <option selected="selected">Authorized Absence</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <textarea class="form-control" name="description">
-        </textarea>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Save Attendance">
-      </div>
-    </form>
+<div class="main-content">
+  <h2 class="group-title"><%= @course.name %> Register</h2>
+
+  <div class="form-heading">
+    <p id="name-col">Name</p>
+    <p id="date-col">Date</p>
+    <p id="att-col">Attendance</p>
+    <p id="description-col">Description</p>
+  </div>
+
+  <% @course_attendance.each do |student_status|%>
+  <form method="post" class="student-attendance-display">
+
+    <% if(student_status.student_id) %>
+      <input type="hidden" name="_method" value="put">
     <% end %>
-  </ul>
+
+    <div class="form-group student-form">
+      <input type="hidden" name="student_id" value="<%= student_status.student_id %>">
+      <p class="student-name" name="name"><a href="/students/<%= student_status.student_id%>"><%= student_status.first_name %> <%= student_status.last_name %></a></p>
+      <p name="attendance_date"><%= Date.today.to_s %></p>
+      <select class="form-control" name="status" id="exampleFormControlSelect2">
+        <option>On Time</option>
+        <option>Slightly late(5 minutes)</option>
+        <option>Very late(over 30 minutes)</option>
+        <option>Absent</option>
+        <option>Authorized Absence</option>
+      </select>
+      <textarea class="form-control" name="description"></textarea>
+      <input type="submit" value="Save Attendance">
+    </div>
+  </form>
+  <% end %>
 </div>
