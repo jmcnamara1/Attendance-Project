@@ -42,8 +42,8 @@ INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Needs assi
 
 
 INSERT INTO attendance_status(status, colour_code) VALUES ('On Time', 'forestgreen');
-INSERT INTO attendance_status(status, colour_code) VALUES ('less than 5 mins late', '#ffff59');
-INSERT INTO attendance_status(status, colour_code) VALUES ('more than 5 mins late', '#ffc04d');
+INSERT INTO attendance_status(status, colour_code) VALUES ('Less than 5 mins late', '#ffff59');
+INSERT INTO attendance_status(status, colour_code) VALUES ('More than 5 mins late', '#ffc04d');
 INSERT INTO attendance_status(status, colour_code) VALUES ('Absent', 'red');
 INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absence', '#b3dbff');
 
