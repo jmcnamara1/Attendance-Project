@@ -7,6 +7,7 @@ body{
   width: 150px;
 }
 .button input{
+  margin: 0 0 5px 0;
   width: 150px;
 }
 .StudentList{
@@ -35,8 +36,4 @@ div .progress{
 }
 .end-box{
   margin: 0 15px;
-}
-.submit{
-  border-radius: 17%;
-  margin: 0 86px;
 }
