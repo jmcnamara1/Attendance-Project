@@ -128,3 +128,7 @@ a:visited {
   background-color: darkgreen;
   color: white;
 }
+
+#navbarDropDown {
+  display: inline-block;
+}
