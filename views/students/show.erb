@@ -1,4 +1,9 @@
-<!-- dispplays individual student attendance record -->
+<div class="container">
+  <h2><%= @student.first_name + ' ' + @student.last_name %></h2>
+  <h2><%= @course.name %></h2>
+</div>
+
+<!-- displays individual student attendance record -->
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -18,6 +23,7 @@
   </tbody>
 </table>
 
+<!-- displays table showing each status % -->
 <table class="table">
   <thead class="thead-light">
     <tr>
@@ -29,32 +35,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @attendance_record.each do |daily_record| %>
-      OT = 0
-      SL = 0
-      VL = 0
-      A = 0
-      AA = 0
-
-      case daily_record.status
-      when 'On Time'
-        OT++
-      when 'less than 5 mins late'
-        SL++
-      when 'more than 5 mins late'
-        VL++
-      when 'Absent'
-        A++
-      when 'Authorised Absence'
-        AA++
-      end
     <tr>
-      <td><%= OT + '%' %></td>
-      <td><%= SL + '%' %></td>
-      <td><%= VL + '%' %></td>
-      <td><%= A + '%' %></td>
-      <td><%= AA + '%' %></td>
+      <td><%= (@ot / @attendance_record.length)*100%>%</td>
+      <td><%= (@sl / @attendance_record.length)*100%>%</td>
+      <td><%= (@vl / @attendance_record.length)*100%>%</td>
+      <td><%= (@a / @attendance_record.length)*100%>%</td>
+      <td><%= (@aa / @attendance_record.length)*100%>%</td>
     </tr>
-    <% end %>
   </tbody>
 </table>

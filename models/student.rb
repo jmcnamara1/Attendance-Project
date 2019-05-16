@@ -7,6 +7,16 @@ class Student
       PG.connect(dbname: "attendance_app")
     end
 
+    def self.find(id)
+      conn = self.open_connection
+
+      sql = "SELECT * FROM students WHERE student_id = #{id} LIMIT 1"
+
+      response = conn.exec(sql)
+
+      return self.hydrate(response[0])
+    end
+
     # Requests all students data
     def self.all
       conn = self.open_connection

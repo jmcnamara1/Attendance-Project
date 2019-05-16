@@ -15,10 +15,6 @@ class StaticController < Sinatra::Base
 
   # index
 	get "/" do
-		unless cookies[:visited]
-			@message = true
-			response.set_cookie(:visited, value: 1, expires: Time.now + (60 * 20))
-		end
 
 		erb :'static/homepage'
 	end

@@ -21,6 +21,7 @@ class Course
 
     return courses
   end
+
   # Info from 1 course
   def self.find(id)
     conn = self.open_connection
@@ -45,9 +46,8 @@ class Course
     conn.exec(sql)
 
     return course[0]
-    
-  end
 
+  end
 
   def self.update_course id
     conn = self.open_connection
