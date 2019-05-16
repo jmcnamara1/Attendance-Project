@@ -32,6 +32,8 @@ class AttendanceController < Sinatra::Base
 
     if foundFlag == false
       puts "Not Found"
+      # How does this know where to get :id from?
+      # Is it because we defined it in the post command
       course_id = params[:id].to_i
       new_attendance = Attendance.new()
 

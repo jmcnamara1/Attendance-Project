@@ -1,4 +1,4 @@
--- CREATE DATABASE  attendance_app;
+CREATE DATABASE  attendance_app;
 
 DROP TABLE IF EXISTS student_attendance;
 DROP TABLE IF EXISTS students;
@@ -30,7 +30,6 @@ CREATE TABLE students (
 CREATE TABLE student_attendance (
   student_attendance_id SERIAL PRIMARY KEY,
   attendance_date DATE default now(),
-  student_form,
   student_id INT,
   FOREIGN KEY(student_id) REFERENCES students(student_id),
   attendance_status_id INT REFERENCES attendance_status(attendance_status_id),
@@ -86,3 +85,15 @@ INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id
 INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/14','9','2','');
 INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/14','10','2','');
 INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/14','11','2','');
+
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','1','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','2','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','3','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','4','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','5','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','6','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','7','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','8','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','9','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','10','2','');
+INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('2019/05/15','11','2','');

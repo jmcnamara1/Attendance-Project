@@ -33,9 +33,28 @@ class CoursesController < Sinatra::Base
   # Show
   get '/courses/:id' do
     id = params[:id].to_i
+    @course_attendance = Student.course_attendance(id)
+
+    @todaysAttendance = []
+
+    attendance_entries = Attendance.all
+
+    @course_attendance.each do |attendee|
+      attendance_entries.each do |entry|
+        if entry.student_id == attendee.student_id && entry.attendance_date == Time.now.strftime("%Y-%m-%d")
+          temp = {
+            student_id: entry.student_id,
+            attendance_status: entry.attendance_status_id,
+            attendance_description: entry.description
+          }
+          @todaysAttendance.push(temp)
+        end
+      end
+    end
+
+
 
     @course = Course.find(id)
-    @course_attendance = Student.course_attendance(id)
     @attendance_list = Student.course_attendance_status(id)
 
     erb :'/courses/show'
