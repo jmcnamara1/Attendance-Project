@@ -42,6 +42,29 @@ class Student
       return self.hydrate response[0]
     end
 
+    def self.find_firstn first_name
+      conn = self.open_connection
+
+      sql = "SELECT * FROM students WHERE first_name LIKE '#{first_name}%'"
+
+      response = conn.exec(sql)
+
+      students = response.map do |data_item|
+        self.hydrate data_item
+      end
+
+      return students
+    end
+
+    def self.find_fulln first_name, last_name
+      conn = self.open_connection
+
+      sql = "SELECT * FROM students WHERE first_name='#{first_name}' AND last_name LIKE '#{last_name}%'"
+
+      response = conn.exec(sql)
+
+      return self.hydrate response[0]
+    end
 
     def save
       conn = Student.open_connection

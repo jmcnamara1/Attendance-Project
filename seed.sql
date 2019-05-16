@@ -47,7 +47,7 @@ INSERT INTO attendance_status(status, colour_code) VALUES ('more than 5 mins lat
 INSERT INTO attendance_status(status, colour_code) VALUES ('Absent', 'red');
 INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absence', '#b3dbff');
 
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Joel','McNamara','1');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Joel','Mcnamara','1');
 INSERT INTO students(first_name, last_name, course_id) VALUES ('Matthew','Murphy','1');
 INSERT INTO students(first_name, last_name, course_id) VALUES ('Patrick','Daneshyar','1');
 INSERT INTO students(first_name, last_name, course_id) VALUES ('Radoslav','Shtarkov','1');

@@ -97,4 +97,18 @@ class StudentsController < Sinatra::Base
 
   end
 
+  post "/search" do
+    names = params[:searchBar].split(" ")
+    first_name = names[0].capitalize
+    last_name = names[1]
+    if last_name != nil
+      last_name.capitalize!
+      @student = Student.find_fulln first_name, last_name
+    elsif last_name == nil
+
+      @student = Student.find_firstn first_name
+    end
+    redirect "/search"
+  end
+
 end
