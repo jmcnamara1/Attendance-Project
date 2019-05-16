@@ -105,16 +105,25 @@ class StudentsController < Sinatra::Base
 
   post "/search" do
     names = params[:searchBar].split(" ")
-    first_name = names[0].capitalize
+
+    first_name = names[0]
     last_name = names[1]
+    if names.length > 2
+      names = names[0..1]
+    end
+    if first_name == nil
+      redirect "/courses"
+    elsif first_name != nil
+      first_name.capitalize!
+    end
+
     if last_name != nil
       last_name.capitalize!
       @student = Student.find_fulln first_name, last_name
     elsif last_name == nil
-
       @student = Student.find_firstn first_name
     end
-    redirect "/search"
+    erb :'/partials/search'
   end
 
 end

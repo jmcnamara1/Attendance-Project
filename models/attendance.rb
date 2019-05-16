@@ -35,12 +35,8 @@ class Attendance
   def save
     conn = Attendance.open_connection
 
-    if (self.attendance_id)
+    sql = "INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('#{self.attendance_date}', '#{self.student_id}', '#{self.attendance_status_id}', '#{self.description}')"
 
-      sql = "UPDATE student_attendance SET attendance_date='#{self.attendance_date}', attendance_status_id='#{self.attendance_status_id}', student_id='#{self.student_id}', description='#{self.description}' WHERE student_attendance_id='#{self.attendance_id}'"
-    else
-      sql = "INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('#{self.attendance_date}', '#{self.student_id}', '#{self.attendance_status_id}', '#{self.description}')"
-    end
     conn.exec(sql)
   end
 

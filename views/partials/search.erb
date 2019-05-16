@@ -1,0 +1,11 @@
+<div >
+  <% if @student[0] == nil %>
+   <p>No students with that name were found...</p>
+   <p>Please search again or look through the complete list of students.</p>
+  <% end %>
+  <ul>
+    <% @student.each do |students|%>
+    <li><%= students.first_name %></li>
+    <% end %>
+  </ul>
+</div>
