@@ -33,7 +33,7 @@ class CoursesController < Sinatra::Base
   # Show
   get '/courses/:id' do
     id = params[:id].to_i
-    @course_attendees = Student.course_attendees(id)
+    @course_attendees = Student.course_attendance(id)
 
     @todaysAttendance = []
 
@@ -55,7 +55,7 @@ class CoursesController < Sinatra::Base
 
 
     @course = Course.find(id)
-    @attendance_list = Student.course_attendees_status(id)
+    @attendance_list = Student.course_attendance_status(id)
 
     erb :'/courses/show'
 

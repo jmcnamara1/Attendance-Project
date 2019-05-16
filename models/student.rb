@@ -1,10 +1,20 @@
 class Student
 
-  attr_accessor :student_id, :first_name, :last_name, :course_id, :student_attendance, :attendance_date, :attendance_status_id, :description
+  attr_accessor :student_id, :first_name, :last_name, :course_id, :student_attendance, :attendance_date, :attendance_status_id, :description, :status
 
   # Establishes connection to the "stores" database within PostGres
     def self.open_connection
       PG.connect(dbname: "attendance_app")
+    end
+
+    def self.find(id)
+      conn = self.open_connection
+
+      sql = "SELECT * FROM students WHERE student_id = #{id} LIMIT 1"
+
+      response = conn.exec(sql)
+
+      return self.hydrate(response[0])
     end
 
     # Requests all students data
@@ -84,17 +94,24 @@ class Student
       conn.exec(sql)
     end
 
+    # returns attendance history of individual student
     def self.attendance_history(id)
       conn = self.open_connection
 
-      sql = "SELECT ---- From students s
-              INNER JOIN student_attendance sa on s.student_id = sa.student_id
-              INNER JOIN attendance_status ast on sa.attendance_status_id = ast.attendance_status_id
-              where student_id='#{id}'"
+      sql = "SELECT sa.attendance_date, ast.status, sa.description FROM student_attendance sa
+      INNER JOIN attendance_status ast ON sa.attendance_status_id = ast.attendance_status_id WHERE student_id='#{id}'"
+
+      response = conn.exec(sql)
+
+      attendance_history = response.map do |data_item|
+        self.hydrate_attendance(data_item)
+      end
+
+      return attendance_history
     end
 
     # Convert the response from a PG::Result
-    def self.hydrate data
+    def self.hydrate(data)
       student = Student.new
 
       student.student_id = data['student_id']
@@ -119,6 +136,16 @@ class Student
       student.description = data['description']
 
       return student
+    end
+
+    def self.hydrate_attendance(data)
+      student_records = Student.new
+
+      student_records.attendance_date = data['attendance_date']
+      student_records.status = data['status']
+      student_records.description = data['description']
+
+      return student_records
     end
 
 end

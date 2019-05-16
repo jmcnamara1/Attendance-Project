@@ -61,6 +61,7 @@ class Course
     end
 
     conn.exec(sql)
+
   end
 
   def self.update_course id
