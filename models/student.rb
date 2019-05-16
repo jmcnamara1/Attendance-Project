@@ -1,6 +1,6 @@
 class Student
 
-  attr_accessor :student_id, :first_name, :last_name, :course_id, :student_attendance, :attendance_date, :attendance_status_id, :description, :status
+  attr_accessor :student_id, :first_name, :last_name, :course_id, :student_attendance, :attendance_date, :attendance_status_id, :description, :status, :colour_code
 
   # Establishes connection to the "stores" database within PostGres
     def self.open_connection
@@ -98,7 +98,7 @@ class Student
     def self.attendance_history(id)
       conn = self.open_connection
 
-      sql = "SELECT sa.attendance_date, ast.status, sa.description FROM student_attendance sa
+      sql = "SELECT sa.attendance_date, ast.status, sa.description, ast.colour_code FROM student_attendance sa
       INNER JOIN attendance_status ast ON sa.attendance_status_id = ast.attendance_status_id WHERE student_id='#{id}'"
 
       response = conn.exec(sql)
@@ -144,6 +144,7 @@ class Student
       student_records.attendance_date = data['attendance_date']
       student_records.status = data['status']
       student_records.description = data['description']
+      student_records.colour_code = data['colour_code']
 
       return student_records
     end
