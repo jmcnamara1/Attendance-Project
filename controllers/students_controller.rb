@@ -97,4 +97,6 @@ class StudentsController < Sinatra::Base
 
   end
 
+  post "/student"
+
 end
