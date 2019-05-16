@@ -1,4 +1,4 @@
--- CREATE DATABASE  attendance_app;
+CREATE DATABASE  attendance_app;
 
 DROP TABLE IF EXISTS student_attendance;
 DROP TABLE IF EXISTS students;
@@ -43,10 +43,10 @@ INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Needs assi
 
 
 INSERT INTO attendance_status(status, colour_code) VALUES ('On Time', 'g');
-INSERT INTO attendance_status(status, colour_code) VALUES ('<5 mins late', 'y');
-INSERT INTO attendance_status(status, colour_code) VALUES ('>5 mins late', 'o');
+INSERT INTO attendance_status(status, colour_code) VALUES ('less than 5 mins late', 'y');
+INSERT INTO attendance_status(status, colour_code) VALUES ('more than 5 mins late', 'o');
 INSERT INTO attendance_status(status, colour_code) VALUES ('Absent', 'r');
-INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absent', 'b');
+INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absence', 'b');
 
 INSERT INTO students(first_name, last_name, course_id) VALUES ('Joel','McNamara','1');
 INSERT INTO students(first_name, last_name, course_id) VALUES ('Matthew','Murphy','1');

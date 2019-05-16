@@ -33,7 +33,7 @@ class Course
     return self.hydrate response[0]
   end
 
-  
+
 
   def save
     conn = Course.open_connection
@@ -44,6 +44,8 @@ class Course
 
       sql = "INSERT INTO courses (name ,course_type ,start_date ,end_date) VALUES ('#{self.name}', '#{self.course_type}', '#{self.start_date}', '#{self.end_date}')"
     end
+
+    conn.exec(sql)
 
     return course[0]
   end
@@ -59,6 +61,7 @@ class Course
     end
 
     conn.exec(sql)
+
   end
 
   def self.update_course id
