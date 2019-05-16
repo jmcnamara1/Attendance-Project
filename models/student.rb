@@ -61,12 +61,13 @@ class Student
     def self.find_firstn first_name
       conn = self.open_connection
 
-      sql = "SELECT * FROM students WHERE first_name LIKE '#{first_name}%'"
+      sql = "SELECT * FROM students s INNER JOIN courses c ON s.course_id = c.course_id
+      WHERE first_name LIKE '#{first_name}%'"
 
       response = conn.exec(sql)
 
       students = response.map do |data_item|
-        self.hydrate data_item
+        self.hydrate_all_plus_courses data_item
       end
 
       return students
@@ -75,12 +76,13 @@ class Student
     def self.find_fulln first_name, last_name
       conn = self.open_connection
 
-      sql = "SELECT * FROM students WHERE first_name LIKE '#{first_name}%' AND last_name LIKE '#{last_name}%'"
+      sql = "SELECT * FROM students s INNER JOIN courses c ON s.course_id = c.course_id
+      WHERE first_name LIKE '#{first_name}%' AND last_name LIKE '#{last_name}%'"
 
       response = conn.exec(sql)
 
       students = response.map do |data_item|
-        self.hydrate data_item
+        self.hydrate_all_plus_courses data_item
       end
 
       return students
