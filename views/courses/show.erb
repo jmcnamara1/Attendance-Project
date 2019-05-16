@@ -8,7 +8,6 @@
 <hr>
 
 <div class="">
-  <% puts @todaysAttendance %>
   <ul>
     <% @course_attendance.each do |student_status|%>
     <form action="/courses/<%= @course.course_id %>" method="post">
