@@ -1,7 +1,13 @@
-<div class="container">
-  <h2><%= @student.first_name + ' ' + @student.last_name %></h2>
-  <h2><%= @course.name %></h2>
+<div class="form-row">
+
+  <div class="form-group col-6 text-info">
+    <h2><%= @student.first_name + ' ' + @student.last_name %></h2>
+  </div>
+  <div class="form-group col-6 text-info">
+    <h2><%= @course.name %></h2>
+  </div>
 </div>
+
 
 <!-- displays individual student attendance record -->
 <table class="table table-bordered table-hover">
@@ -16,7 +22,7 @@
     <% @attendance_record.each do |daily_record| %>
     <tr>
       <td> <%= daily_record.attendance_date %> </td>
-      <td> <%= daily_record.status  %></td>
+      <td style="background-color: <%= daily_record.colour_code %>"> <%= daily_record.status  %></td>
       <td> <%= daily_record.description  %></td>
     </tr>
     <% end %>
@@ -36,11 +42,11 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= (@ot / @attendance_record.length)*100%>%</td>
-      <td><%= (@sl / @attendance_record.length)*100%>%</td>
-      <td><%= (@vl / @attendance_record.length)*100%>%</td>
-      <td><%= (@a / @attendance_record.length)*100%>%</td>
-      <td><%= (@aa / @attendance_record.length)*100%>%</td>
+      <td style="background-color: forestgreen"><%= ((@ot / @attendance_record.length)*100).round()%>%</td>
+      <td style="background-color: #ffff59"><%= ((@sl / @attendance_record.length)*100).round()%>%</td>
+      <td style="background-color: #ffc04d"><%= ((@vl / @attendance_record.length)*100).round()%>%</td>
+      <td style="background-color: red"><%= ((@a / @attendance_record.length)*100).round()%>%</td>
+      <td style="background-color: #b3dbff"><%= ((@aa / @attendance_record.length)*100).round()%>%</td>
     </tr>
   </tbody>
 </table>

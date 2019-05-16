@@ -16,7 +16,7 @@ CREATE TABLE courses (
 CREATE TABLE attendance_status (
   attendance_status_id SERIAL PRIMARY KEY,
   status VARCHAR(30),
-  colour_code VARCHAR(1)
+  colour_code VARCHAR(15)
 );
 
 CREATE TABLE students (
@@ -32,9 +32,8 @@ CREATE TABLE student_attendance (
   attendance_date DATE default now(),
   student_id INT,
   FOREIGN KEY(student_id) REFERENCES students(student_id),
-  attendance_status_id INT,
-  FOREIGN KEY(attendance_status_id) REFERENCES attendance_status(attendance_status_id),
-  description VARCHAR(255)
+  attendance_status_id INT, FOREIGN KEY(attendance_status_id) REFERENCES attendance_status(attendance_status_id),
+  description VARCHAR(100)
 );
 
 INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Eng-30','2019/04/01', '2019/06/28','Engineering');
@@ -42,11 +41,11 @@ INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Busi-26','
 INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Needs assignment','2019/05/13','2019/10/04','Unassigned');
 
 
-INSERT INTO attendance_status(status, colour_code) VALUES ('On Time', 'g');
-INSERT INTO attendance_status(status, colour_code) VALUES ('less than 5 mins late', 'y');
-INSERT INTO attendance_status(status, colour_code) VALUES ('more than 5 mins late', 'o');
-INSERT INTO attendance_status(status, colour_code) VALUES ('Absent', 'r');
-INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absence', 'b');
+INSERT INTO attendance_status(status, colour_code) VALUES ('On Time', 'forestgreen');
+INSERT INTO attendance_status(status, colour_code) VALUES ('less than 5 mins late', '#ffff59');
+INSERT INTO attendance_status(status, colour_code) VALUES ('more than 5 mins late', '#ffc04d');
+INSERT INTO attendance_status(status, colour_code) VALUES ('Absent', 'red');
+INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absence', '#b3dbff');
 
 INSERT INTO students(first_name, last_name, course_id) VALUES ('Joel','McNamara','1');
 INSERT INTO students(first_name, last_name, course_id) VALUES ('Matthew','Murphy','1');
