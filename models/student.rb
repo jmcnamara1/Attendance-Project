@@ -1,6 +1,6 @@
 class Student
 
-  attr_accessor :student_id, :first_name, :last_name, :course_id, :student_attendance, :attendance_date, :attendance_status_id, :description, :status, :colour_code
+  attr_accessor :student_id, :first_name, :last_name, :course_id, :student_attendance, :attendance_date, :attendance_status_id, :description, :status, :colour_code, :course_name
 
   # Establishes connection to the "stores" database within PostGres
     def self.open_connection
@@ -27,6 +27,22 @@ class Student
 
       students = response.map do |data_item|
         self.hydrate data_item
+      end
+
+      return students
+    end
+
+    def self.all_with_course
+      conn = self.open_connection
+
+      sql = "SELECT * FROM students s
+            INNER JOIN courses c ON
+            c.course_id = s.course_id"
+
+      response = conn.exec(sql)
+
+      students = response.map do |data_item|
+        self.hydrate_all_plus_courses data_item
       end
 
       return students
@@ -147,6 +163,18 @@ class Student
       student_records.colour_code = data['colour_code']
 
       return student_records
+    end
+
+    def self.hydrate_all_plus_courses(data)
+      student = Student.new
+
+      student.student_id = data['student_id']
+      student.first_name = data['first_name']
+      student.last_name = data['last_name']
+      student.course_id = data['course_id']
+      student.course_name = data['name']
+
+      return student
     end
 
 end
