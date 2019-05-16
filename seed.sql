@@ -36,14 +36,14 @@ CREATE TABLE student_attendance (
   description VARCHAR(100)
 );
 
+INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Needs assignment','2019/05/13','2019/10/04','Unassigned');
 INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Eng-30','2019/04/01', '2019/06/28','Engineering');
 INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Busi-26','2019/05/13','2019/07/05','Business');
-INSERT INTO courses(name, start_date, end_date, course_type) VALUES ('Needs assignment','2019/05/13','2019/10/04','Unassigned');
 
 
 INSERT INTO attendance_status(status, colour_code) VALUES ('On Time', 'forestgreen');
-INSERT INTO attendance_status(status, colour_code) VALUES ('less than 5 mins late', '#ffff59');
-INSERT INTO attendance_status(status, colour_code) VALUES ('more than 5 mins late', '#ffc04d');
+INSERT INTO attendance_status(status, colour_code) VALUES ('Less than 5 mins late', '#ffff59');
+INSERT INTO attendance_status(status, colour_code) VALUES ('More than 5 mins late', '#ffc04d');
 INSERT INTO attendance_status(status, colour_code) VALUES ('Absent', 'red');
 INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absence', '#b3dbff');
 

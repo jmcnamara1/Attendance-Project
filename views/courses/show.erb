@@ -17,16 +17,12 @@
   </div>
 
   <% @course_attendance.each do |student_status|%>
-  <form method="post" class="student-attendance-display">
-
-    <% if(student_status.student_id) %>
-      <input type="hidden" name="_method" value="put">
-    <% end %>
+  <form action="/courses/<%= @course.course_id %>" method="post" class="student-attendance-display">
 
     <div class="form-group student-form">
       <input type="hidden" name="student_id" value="<%= student_status.student_id %>">
       <p class="student-name" name="name"><a href="/students/<%= student_status.student_id%>"><%= student_status.first_name %> <%= student_status.last_name %></a></p>
-      <div class="form-group  mt-3">
+      <div class="form-group ml-2 mt-3">
         <input type="date" name="attendance_date" value="<%= Date.today.to_s %>">
       </div>
       <select class="form-control" name="status" id="exampleFormControlSelect2">
