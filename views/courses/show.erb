@@ -1,6 +1,5 @@
 <form class="" action="/courses/<%= @course.course_id %>" method="post">
   <a class="btn btn-primary" href="/students/new">Add Student</a>
-  <a class="btn btn-primary" href="">Edit Attendance</a>
 
   <input class="btn btn-primary" type="hidden" name="_method" value="delete">
   <input class="btn btn-primary" type="submit" value="Remove Course">
@@ -27,7 +26,7 @@
     <div class="form-group student-form">
       <input type="hidden" name="student_id" value="<%= student_status.student_id %>">
       <p class="student-name" name="name"><a href="/students/<%= student_status.student_id%>"><%= student_status.first_name %> <%= student_status.last_name %></a></p>
-      <div class="form-group col-3 mt-3">
+      <div class="form-group  mt-3">
         <input type="date" name="attendance_date" value="<%= Date.today.to_s %>">
       </div>
       <select class="form-control" name="status" id="exampleFormControlSelect2">
@@ -37,7 +36,7 @@
         <option>Absent</option>
         <option>Authorized Absence</option>
       </select>
-      <textarea class="form-control" name="description"></textarea>
+        <textarea class="form-control" name="description"></textarea>
       <input type="submit" value="Save Attendance">
     </div>
   </form>
