@@ -1,17 +1,7 @@
 a {
-  color: blue;
+  color: slategrey;
 }
 
-#course-header{
-    border: solid 0.5px black;
-}
-
-#footer {
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
 
 .group-title {
   text-align: center;
@@ -51,7 +41,7 @@ a {
   flex-direction: row;
   justify-content: space-around;
   margin: 20px 0;
-  background-color: deepskyblue;
+  background-color: lightblue;
   font-weight: bold;
   border-radius: 5px;
   border: solid 2px black;
@@ -130,7 +120,7 @@ a {
   height: 40px;
   align-self: center;
   margin-right: 2%;
-  background-color: #00FF00;
+  background-color: limegreen;
   font-weight: bold;
   border-radius: 5px;
 }
