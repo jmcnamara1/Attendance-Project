@@ -1,5 +1,16 @@
-a:visited {
-  color: black;
+a {
+  color: blue;
+}
+
+#course-header{
+    border: solid 0.5px black;
+}
+
+#footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .group-title {
