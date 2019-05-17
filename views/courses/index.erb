@@ -6,7 +6,7 @@
     <% @courses.each do |course| %>
     <div class="card col-4 text-center" style="width: 18rem;">
       <div class="card-body">
-        <h4 class="card-title"><%= course.name %></h4>
+        <h4 class="card-title"><%= course.name.capitalize %></h4>
         <h5 class="card-text"><%= course.course_type %></h5>
         <h5 class="card-text">Start Date: <%= course.start_date.split("-").reverse.join("/") %></h5>
         <h5 class="card-text">End Date: <%= course.end_date.split("-").reverse.join("/") %></h5>
