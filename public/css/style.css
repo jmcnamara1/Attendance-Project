@@ -2,6 +2,22 @@ a {
   color: slategrey;
 }
 
+footer{
+  background-color: #B0C4DE;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 10px 0 0 0;
+  height: 50px;
+}
+
+.searchbar {
+  width: 300px;
+}
+
+.container {
+  margin-bottom: 20px;
+}
 
 .group-title {
   text-align: center;
