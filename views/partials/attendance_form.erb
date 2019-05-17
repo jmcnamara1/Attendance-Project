@@ -1,0 +1,29 @@
+<form class="" action="/students/<%= @student.student_id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+
+  <div class="form-group col-sm-3">
+    <label>Name</label>
+    <input class="form-control" readonly type="text" name="name" value="<%= @student.first_name + ' ' + @student.last_name %>">
+  </div>
+  <div class="form-group col-sm-3">
+    <label>Date</label>
+    <input class="form-control" type="text" name="date" readonly value="<%= @attendance.attendance_date %>">
+  </div>
+    <div class="form-group col-sm-2">
+      <label>Attendance Status</label>
+      <select class="form-control" name="status" id="exampleFormControlSelect2">
+        <option>On Time</option>
+        <option>Slightly late(5 minutes)</option>
+        <option>Very late(over 30 minutes)</option>
+        <option>Absent</option>
+        <option>Authorized Absence</option>
+      </select>
+    </div>
+    <div class="form-group col-sm-2">
+      <label>Comments</label>
+      <textarea name="comments" class="form-control"><%= @attendance.description %></textarea>
+    </div>
+    <div class="form-group col-sm-2">
+      <input class="btn btn-primary" type="submit" name="" value="Save">
+    </div>
+</form>

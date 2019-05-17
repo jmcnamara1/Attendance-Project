@@ -13,10 +13,24 @@ class AttendanceController < Sinatra::Base
   # sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
+  # Edit
+  get "/students/:id/edit" do
+    id = params[:id].to_i
+    date = params[:date]
+
+    dateArray = date.split('-')
+    year = dateArray[0].to_i
+    month = dateArray[1].to_i
+    day = dateArray[2].to_i
+
+    @student = Student.find(id)
+    @attendance = Attendance.find_individual_day(id, day, month, year)
+
+    erb :'attendance/edit'
+  end
+
   # runs when students attendance is updated
   post '/courses/:id' do
-
-
     foundFlag = false
 
     attendance_entries = Attendance.all
@@ -24,42 +38,72 @@ class AttendanceController < Sinatra::Base
 
       if entry.student_id == params[:student_id] && entry.attendance_date == params[:attendance_date]
         foundFlag = true
-        puts "Match"
-        puts "DB date: #{entry.attendance_date}"
-        puts "Input date: #{params[:attendance_date]}"
+      end
+
+      if foundFlag == false
+        puts "Not Found"
+        course_id = params[:id].to_i
+        new_attendance = Attendance.new()
+
+        new_attendance.attendance_date = params[:attendance_date]
+
+        status = params[:status]
+        case status
+        when 'On Time'
+          new_attendance.attendance_status_id = 1
+        when 'Slightly late(5 minutes)'
+          new_attendance.attendance_status_id = 2
+        when 'Very late(over 30 minutes)'
+          new_attendance.attendance_status_id = 3
+        when 'Absent'
+          new_attendance.attendance_status_id = 4
+        when 'Authorized Absence'
+          new_attendance.attendance_status_id = 5
+        end
+
+        new_attendance.student_id = params[:student_id]
+        new_attendance.description = params[:description]
+
+        new_attendance.save()
       end
     end
 
-    if foundFlag == false
-      puts "Not Found"
       course_id = params[:id].to_i
-      new_attendance = Attendance.new()
 
-      new_attendance.attendance_date = params[:attendance_date]
+      redirect "/courses/#{course_id}"
+  end
 
-      status = params[:status]
-      case status
-      when 'On Time'
-        new_attendance.attendance_status_id = 1
-      when 'Slightly late(5 minutes)'
-        new_attendance.attendance_status_id = 2
-      when 'Very late(over 30 minutes)'
-        new_attendance.attendance_status_id = 3
-      when 'Absent'
-        new_attendance.attendance_status_id = 4
-      when 'Authorized Absence'
-        new_attendance.attendance_status_id = 5
-      end
+  # update student attendance
+  put '/students/:id' do
+    id = params[:id].to_i
+    date = params[:date]
 
-      new_attendance.student_id = params[:student_id]
-      new_attendance.description = params[:description]
+    dateArray = date.split('-')
+    year = dateArray[0].to_i
+    month = dateArray[1].to_i
+    day = dateArray[2].to_i
 
-      new_attendance.save()
+    attendance = Attendance.find_individual_day(id, day, month, year)
+
+    status = params[:status]
+    case status
+    when 'On Time'
+      attendance.attendance_status_id = 1
+    when 'Slightly late(5 minutes)'
+      attendance.attendance_status_id = 2
+    when 'Very late(over 30 minutes)'
+      attendance.attendance_status_id = 3
+    when 'Absent'
+      attendance.attendance_status_id = 4
+    when 'Authorized Absence'
+      attendance.attendance_status_id = 5
     end
 
-    course_id = params[:id].to_i
+    attendance.description = params[:comments]
 
-    redirect "/courses/#{course_id}"
+    attendance.update(id, day, month, year)
+
+    redirect "students/#{id}"
   end
 
 end

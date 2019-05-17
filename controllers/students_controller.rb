@@ -63,11 +63,6 @@ class StudentsController < Sinatra::Base
     erb :'students/show'
   end
 
-  # Edit
-  get "/students/:id/edit" do
-
-  end
-
   # Create
   post "/students/" do
     new_student = Student.new
@@ -78,8 +73,7 @@ class StudentsController < Sinatra::Base
 
     new_student.save
 
-    redirect "/courses/#{new_student.course_id}"
-
+    redirect "/students"
   end
 
   # Update

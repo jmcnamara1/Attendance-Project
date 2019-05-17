@@ -6,6 +6,7 @@
   <div class="form-group col-4 text-info">
     <h2><%= @course.name %></h2>
   </div>
+
   <div class="form-group col-4">
     <form class="" action = "/students/<%= @student.student_id %>" method="post">
       <input type="hidden" name="_method" value="delete">
@@ -22,15 +23,22 @@
       <th scope="col">Date</th>
       <th scope="col">Attendance Status</th>
       <th scope="col">Description</th>
+      <th scope="col">Edit Attendance</th>
     </tr>
   </thead>
   <tbody>
     <% @attendance_record.each do |daily_record| %>
-    <tr>
-      <td> <%= daily_record.attendance_date %> </td>
-      <td style="background-color: <%= daily_record.colour_code %>"> <%= daily_record.status  %></td>
-      <td> <%= daily_record.description  %></td>
-    </tr>
+    <form class="" action="/students/<%= @student.student_id%>/edit" method="post">
+      <tr>
+        <td>
+          <input type="text" name="date" readonly value="<%= daily_record.attendance_date %>">
+        </td>
+        <td style="background-color: <%= daily_record.colour_code %>"> <%= daily_record.status  %></td>
+        <td> <%= daily_record.description  %></td>
+        <td> <input type="submit" name="" value="Edit Attendance"> </td>
+      </tr>
+      <input type="hidden" name="_method" value="get">
+    </form>
     <% end %>
   </tbody>
 </table>
@@ -48,11 +56,11 @@
   </thead>
   <tbody>
     <tr>
-      <td style="background-color: forestgreen"><%= ((@ot / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: #ffff59"><%= ((@sl / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: #ffc04d"><%= ((@vl / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: red"><%= ((@a / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: #b3dbff"><%= ((@aa / @attendance_record.length)*100).round()%>%</td>
+      <td style="background-color: forestgreen"><%= ((@ot / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: #ffff59"><%= ((@sl / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: #ffc04d"><%= ((@vl / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: red"><%= ((@a / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: #b3dbff"><%= ((@aa / @attendance_record.length)*100).round(2)%>%</td>
     </tr>
   </tbody>
 </table>
