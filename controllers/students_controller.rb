@@ -46,9 +46,9 @@ class StudentsController < Sinatra::Base
       case daily_record.status
         when 'On Time'
           @ot+=1
-        when 'less than 5 mins late'
+        when 'Less than 5 mins late'
           @sl+=1
-        when 'more than 5 mins late'
+        when 'More than 5 mins late'
           @vl+=1
         when 'Absent'
           @a+=1
