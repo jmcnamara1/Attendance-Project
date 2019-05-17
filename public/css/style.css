@@ -2,12 +2,16 @@ a {
   color: slategrey;
 }
 
-footer{
+#footer {
   background-color: #B0C4DE;
   bottom: 0;
   width: 100%;
-  margin: 10px 0 0 0;
   height: 50px;
+
+}
+
+body {
+  margin-bottom: 20px;
 }
 
 .searchbar {
