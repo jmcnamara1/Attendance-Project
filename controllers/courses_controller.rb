@@ -99,6 +99,10 @@ class CoursesController < Sinatra::Base
     redirect "/courses/#{course_id}"
   end
 
+  delete '/courses/1' do
+    redirect "/courses"
+  end
+
 
   # Delete
   delete '/courses/:id' do
