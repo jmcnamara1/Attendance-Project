@@ -43,14 +43,12 @@ class Course
     end
 
     conn.exec(sql)
-
-    return course[0]
   end
 
   def self.update_course id
     conn = self.open_connection
 
-    sql = "UPDATE students SET course_id = 3 WHERE course_id = #{id}"
+    sql = "UPDATE students SET course_id = 1 WHERE course_id = #{id}"
 
     conn.exec(sql)
   end

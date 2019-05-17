@@ -9,8 +9,15 @@
    <ul class="navbar-nav">
      <li class="nav-item active">
        <a class="btn " href="/">Home <span class="sr-only">(current)</span></a>
-       <!-- <a class="btn " href="/courses">Courses</a> -->
-       <a class="btn " href="/students">Students</a>
+       <div class="dropdown" id="navbarDropDown">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Students
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/students">View Students</a>
+            <a class="dropdown-item" href="/students/new">Add Students</a>
+          </div>
+        </div>
        <div class="dropdown" id="navbarDropDown">
           <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Courses
