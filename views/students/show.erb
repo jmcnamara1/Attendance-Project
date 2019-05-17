@@ -53,11 +53,11 @@
   </thead>
   <tbody>
     <tr>
-      <td style="background-color: forestgreen"><%= ((@ot / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: #ffff59"><%= ((@sl / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: #ffc04d"><%= ((@vl / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: red"><%= ((@a / @attendance_record.length)*100).round()%>%</td>
-      <td style="background-color: #b3dbff"><%= ((@aa / @attendance_record.length)*100).round()%>%</td>
+      <td style="background-color: forestgreen"><%= ((@ot / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: #ffff59"><%= ((@sl / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: #ffc04d"><%= ((@vl / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: red"><%= ((@a / @attendance_record.length)*100).round(2)%>%</td>
+      <td style="background-color: #b3dbff"><%= ((@aa / @attendance_record.length)*100).round(2)%>%</td>
     </tr>
   </tbody>
 </table>

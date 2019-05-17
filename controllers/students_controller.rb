@@ -73,8 +73,7 @@ class StudentsController < Sinatra::Base
 
     new_student.save
 
-    redirect "/courses/#{new_student.course_id}"
-
+    redirect "/students"
   end
 
   # Update
