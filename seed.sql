@@ -47,18 +47,18 @@ INSERT INTO attendance_status(status, colour_code) VALUES ('More than 5 mins lat
 INSERT INTO attendance_status(status, colour_code) VALUES ('Absent', 'red');
 INSERT INTO attendance_status(status, colour_code) VALUES ('Authorised Absence', '#b3dbff');
 
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Joel','Mcnamara','1');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Matthew','Murphy','1');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Patrick','Daneshyar','1');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Radoslav','Shtarkov','1');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Isharq','Hussain','1');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Jake','Brown','1');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Joel','Mcnamara','2');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Matthew','Murphy','2');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Patrick','Daneshyar','2');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Radoslav','Shtarkov','2');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Isharq','Hussain','2');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Jake','Brown','2');
 
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Bob','2');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Steve','2');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Phil','2');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Ryan','2');
-INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Terrance','2');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Bob','3');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Steve','3');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Phil','3');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Ryan','3');
+INSERT INTO students(first_name, last_name, course_id) VALUES ('Student','Terrance','3');
 
 
 
