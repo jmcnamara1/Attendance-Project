@@ -10,7 +10,10 @@
   </div>
   <div class="form-group col-sm-3">
     <label>Stream</label>
-    <input class="form-control" type="text" name="course_type" value="<%= @course.course_type %>" placeholder="Type">
+    <select class="custom-select" id="inputGroupSelect01" name="course_type">
+      <option value="Business">Business</option>
+      <option selected value="Engineering">Engineering</option>
+    </select>
   </div>
   <div class="form-row pl-3">
     <div class="form-group col-sm-2.5">
