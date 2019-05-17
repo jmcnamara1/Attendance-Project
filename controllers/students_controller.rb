@@ -63,11 +63,6 @@ class StudentsController < Sinatra::Base
     erb :'students/show'
   end
 
-  # Edit
-  get "/students/:id/edit" do
-
-  end
-
   # Create
   post "/students/" do
     new_student = Student.new

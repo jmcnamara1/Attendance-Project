@@ -6,7 +6,7 @@
   <div class="form-group col-6 text-info">
     <h2><%= @course.name %></h2>
   </div>
-  <form class="" action = "/students/<%= @student.student_id %>" method="post">
+  <form class="" action="/students/<%= @student.student_id %>" method="post">
   	<input type="hidden" name="_method" value="delete">
   	<input type="submit" name="" value="Remove Student">
   </form>
@@ -20,15 +20,22 @@
       <th scope="col">Date</th>
       <th scope="col">Attendance Status</th>
       <th scope="col">Description</th>
+      <th scope="col">Edit Attendance</th>
     </tr>
   </thead>
   <tbody>
     <% @attendance_record.each do |daily_record| %>
-    <tr>
-      <td> <%= daily_record.attendance_date %> </td>
-      <td style="background-color: <%= daily_record.colour_code %>"> <%= daily_record.status  %></td>
-      <td> <%= daily_record.description  %></td>
-    </tr>
+    <form class="" action="/students/<%= @student.student_id%>/edit" method="post">
+      <tr>
+        <td>
+          <input type="text" name="date" readonly value="<%= daily_record.attendance_date %>">
+        </td>
+        <td style="background-color: <%= daily_record.colour_code %>"> <%= daily_record.status  %></td>
+        <td> <%= daily_record.description  %></td>
+        <td> <input type="submit" name="" value="Edit Attendance"> </td>
+      </tr>
+      <input type="hidden" name="_method" value="get">
+    </form>
     <% end %>
   </tbody>
 </table>

@@ -32,10 +32,29 @@ class Attendance
     return self.hydrate response[0]
   end
 
+  def self.find_individual_day(id, day, month, year)
+    conn = self.open_connection
+
+    sql = "SELECT * FROM student_attendance WHERE student_id = #{id} AND attendance_date = '#{year}-#{month}-#{day}'"
+
+    response = conn.exec(sql)
+
+    return self.hydrate(response[0])
+  end
+
   def save
     conn = Attendance.open_connection
 
     sql = "INSERT INTO student_attendance(attendance_date, student_id, attendance_status_id, description) VALUES ('#{self.attendance_date}', '#{self.student_id}', '#{self.attendance_status_id}', '#{self.description}')"
+
+    conn.exec(sql)
+  end
+
+  def update(id, day, month, year)
+    conn = Attendance.open_connection
+
+    sql = "UPDATE student_attendance SET attendance_status_id='#{self.attendance_status_id}', description='#{self.description}'
+          WHERE student_id = #{id} AND attendance_date = '#{year}-#{month}-#{day}'"
 
     conn.exec(sql)
   end
