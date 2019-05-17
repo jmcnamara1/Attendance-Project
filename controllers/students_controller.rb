@@ -98,11 +98,6 @@ class StudentsController < Sinatra::Base
 
   end
 
-  # Delete
-  delete "/students/:id" do
-
-  end
-
   post "/search" do
     names = params[:searchBar].split(" ")
 
@@ -127,7 +122,13 @@ class StudentsController < Sinatra::Base
   end
 
   delete '/students/:id' do
+    puts "Here?"
+    id = params[:id].to_i
 
-  end
+    Attendance.remove_student_attendance id
+    Student.destroy id
+
+    redirect "/students"
+	end
 
 end

@@ -6,6 +6,10 @@
   <div class="form-group col-6 text-info">
     <h2><%= @course.name %></h2>
   </div>
+  <form class="" action = "/students/<%= @student.student_id %>" method="post">
+  	<input type="hidden" name="_method" value="delete">
+  	<input type="submit" name="" value="Remove Student">
+  </form>
 </div>
 
 

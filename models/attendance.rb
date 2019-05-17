@@ -53,4 +53,14 @@ class Attendance
     return attendance
   end
 
+  def self.remove_student_attendance(id)
+    puts "Were now going to remove attendance data!"
+
+    conn = self.open_connection
+
+    sql = "DELETE FROM student_attendance WHERE student_id = #{id}"
+
+    conn.exec(sql)
+  end
+
 end
