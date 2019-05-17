@@ -3,15 +3,14 @@
 
   <div class="form-group col-sm-3">
     <label>Name</label>
-    <input class="form-control" type="text" name="name" value="<%= @student.first_name + ' ' + @student.last_name %>">
+    <input class="form-control" readonly type="text" name="name" value="<%= @student.first_name + ' ' + @student.last_name %>">
   </div>
   <div class="form-group col-sm-3">
     <label>Date</label>
     <input class="form-control" type="text" name="date" readonly value="<%= @attendance.attendance_date %>">
   </div>
-  <div class="form-row pl-3">
     <div class="form-group col-sm-2">
-      <label>attendance_status</label>
+      <label>Attendance Status</label>
       <select class="form-control" name="status" id="exampleFormControlSelect2">
         <option>On Time</option>
         <option>Slightly late(5 minutes)</option>
@@ -22,9 +21,9 @@
     </div>
     <div class="form-group col-sm-2">
       <label>Comments</label>
-      <input class="form-control" type="textarea" name="comments" value="<%= @attendance.description %>">
+      <textarea name="comments" class="form-control"><%= @attendance.description %></textarea>
     </div>
     <div class="form-group col-sm-2">
-      <input type="submit" name="" value="Save">
+      <input class="btn btn-primary" type="submit" name="" value="Save">
     </div>
 </form>
