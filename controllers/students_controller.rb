@@ -99,7 +99,8 @@ class StudentsController < Sinatra::Base
   end
 
   post "/search" do
-    names = params[:searchBar].split(" ")
+    sqlremove = params[:searchBar].delete "--" ";"
+    names = sqlremove.split(" ")
 
     first_name = names[0]
     last_name = names[1]
