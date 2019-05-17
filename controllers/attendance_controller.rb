@@ -32,7 +32,7 @@ class AttendanceController < Sinatra::Base
   # runs when students attendance is updated
   post '/courses/:id' do
     foundFlag = false
-
+    entryNumber = 0
     attendance_entries = Attendance.all
     attendance_entries.each do |entry|
 
@@ -65,9 +65,33 @@ class AttendanceController < Sinatra::Base
         new_attendance.description = params[:description]
 
         new_attendance.save()
+
+
+      elsif foundFlag == true
+        editAttendance = Attendance.find entryNumber
+
+        editAttendance.attendance_date = params[:attendance_date]
+
+        status = params[:status]
+        case status
+        when 'On Time'
+          editAttendance.attendance_status_id = 1
+        when 'Slightly late(5 minutes)'
+          editAttendance.attendance_status_id = 2
+        when 'Very late(over 30 minutes)'
+          editAttendance.attendance_status_id = 3
+        when 'Absent'
+          editAttendance.attendance_status_id = 4
+        when 'Authorized Absence'
+          editAttendance.attendance_status_id = 5
+        end
+
+        editAttendance.student_id = params[:student_id]
+        editAttendance.description = params[:description]
+
+        editAttendance.save
       end
     end
-
       course_id = params[:id].to_i
 
       redirect "/courses/#{course_id}"
