@@ -126,4 +126,8 @@ class StudentsController < Sinatra::Base
     erb :'/partials/search'
   end
 
+  delete '/students/:id' do
+
+  end
+
 end

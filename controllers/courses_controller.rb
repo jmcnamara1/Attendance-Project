@@ -103,12 +103,12 @@ class CoursesController < Sinatra::Base
   # Delete
   delete '/courses/:id' do
     id = params[:id].to_i
+    #
+    # Course.update_course id
+    # Course.destroy id
 
-    Course.update_course id
-    Course.destroy id
-
-    redirect "/courses"
-
+    puts "Student Name: #{params[:student_name]}"
+    redirect "/courses/#{id}"
   end
 
 end

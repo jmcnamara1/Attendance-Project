@@ -37,4 +37,16 @@
     </div>
   </form>
   <% end %>
+
+
+  <h2 class="group-title"><%= @course.name %> Register</h2>
+  <form class="" action="/courses/<%= @course.course_id %>" method="post">
+  	<input type="hidden" name="_method" value="delete">
+    <select class="form-control" name="student_name">
+      <% @course_attendance.each do |attendee| %>
+        <option class="group-title"><%= attendee.first_name%> <%= attendee.last_name %></option>
+      <% end %>
+    </select>
+  	<input type="submit" name="" value="Delete student">
+  </form>
 </div>
